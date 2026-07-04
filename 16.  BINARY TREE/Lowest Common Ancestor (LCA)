@@ -1,0 +1,56 @@
+/*
+Problem: Lowest Common Ancestor of a Binary Tree
+Platform: LeetCode
+Approach: Recursion
+
+Time Complexity: O(N)
+- Every node is visited at most once.
+
+Space Complexity: O(H)
+- H is the height of the binary tree.
+- O(log N) for a balanced tree.
+- O(N) for a skewed tree due to the recursion stack.
+
+Note:
+The compiler requires that every control path returns a value.
+Although logically one of the conditions above will always execute,
+writing 'return root;' at the end guarantees a return value and
+eliminates the compiler warning.If you wrote return root inside a if case like:
+if(left_lca != NULL && right_lca != NULL){
+            return root;
+it will give error*/
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+
+        if(root == NULL){
+            return NULL;
+        }
+
+        if(root == p || root == q){
+            return root;
+        }
+
+        TreeNode* left_lca = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right_lca = lowestCommonAncestor(root->right, p, q);
+
+        if(left_lca == NULL && right_lca == NULL){
+            return NULL;
+        }
+
+        if(left_lca != NULL && right_lca == NULL){
+            return left_lca;
+        }
+
+        if(left_lca == NULL && right_lca != NULL){
+            return right_lca;
+        }
+
+        // If both left and right return non-NULL,
+        // the current node is the Lowest Common Ancestor.
+        // Keeping 'return root;' outside the last if-statement
+        // ensures all control paths return a value.
+        return root;
+    }
+};
