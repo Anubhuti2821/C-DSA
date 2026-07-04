@@ -1,2 +1,3 @@
-# C++-DSA
-Welcome to my C++ repository!  This repository documents my journey of learning C++ and Data Structures &amp; Algorithms.
+# C++DSA
+Welcome to my C++ repository!
+My C++ learning journey as a Computer Science student—exploring Data Structures & Algorithms, problem-solving, and coding practice while building a strong programming foundation..
